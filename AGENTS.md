@@ -51,3 +51,15 @@ This repository patches the Wand Electron app from a .NET Framework WPF desktop 
 - Web panel build: `cd web-panel && pnpm run build` (runs type-check, Vite build, then `build:bridge` into `dist`).
 - Bridge/script syntax checks after build: `node --check web-panel/dist/bridge.cjs` and `node --check web-panel/dist/renderer-scripts/remote-popup-cleanup.js`.
 - Production dist should contain only static assets and should not contain `mock-instance`, `Mock Adventure`, `Simulation`, `Debug session`, `mock=1`, `demo-session`, `vite.svg`, `tailwind-merge`, `class-variance-authority`, or `clsx`.
+
+## Cross-project engineering standards
+
+- **Scope and authority:** make the smallest necessary changes to fulfill the request. No unsolicited feature, architecture overhaul, broad refactor, migration, or added dependency. Project-specific restrictions take precedence; surface conflicts.
+- **Secrets:** inspect relevant Git ignore rules before publishing. Never commit or expose tokens, passwords, private keys, real .env files, dumps, or personal data. Use a redacted .env.example if relevant. Report accidental exposure promptly without repeating the secret.
+- **Dependencies:** prefer existing components; justify new packages, preserve compatibility and existing lockfiles, and avoid opportunistic upgrades. No unapproved major migration or execution of unfamiliar downloaded tooling.
+- **Correctness:** honor current architecture, naming, public interfaces, folder structure, and target versions. Fix root causes; do not silence exceptions, delete failing tests to make a run pass, or fabricate success. Add regression coverage when appropriate.
+- **Acceptance and evidence:** for nontrivial tasks, state scope, objective, verifiable acceptance criteria, and validation plan. Report implementation, compilation, automated tests, real-runtime validation, and not-run checks separately.
+- **Proportionate checks:** discover existing build/lint/type-check/test commands and run the relevant ones. Do not introduce a new test framework just for project setup; build success is not functional proof.
+- **Documentation:** keep README.md professional, concise, and factual; update existing memory and records without duplicates. Create additional audit/plan/history files only when complexity warrants them. Never invent features or results.
+- **Reversibility:** preserve Git history and user data, consider rollback for risky changes, and obtain explicit approval before destructive work, persistent data migrations, or high-impact deployment. Avoid gratuitous bulk backups.
+
