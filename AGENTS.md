@@ -40,6 +40,12 @@ This repository patches the Wand Electron app from a .NET Framework WPF desktop 
 - Cheat input controls live one-per-file under `web-panel/src/trainer/controls/`; shared `SliderTrack` / `StepButton` / `ControlInternalProps` are in `controls/shared.tsx` and number formatting helpers in `controls/format-number.ts`. `controls/CheatControl.tsx` remains a thin dispatcher keyed by `ECheatType`.
 - Mobile drawer performance is sensitive to `backdrop-filter`. Keep drawer panels and nested glass controls blur-free under coarse pointers, and do not add per-row `backdrop-blur-*` inside drawer lists.
 
+## GitHub Issues — explicit owner approval
+
+- Track bugs, open questions, unverified tests, and remaining work primarily in the project's versioned documentation, without duplicating existing tracking files.
+- **Never automatically create or reopen a GitHub issue** during Codex sessions, audits, commits, or pushes. Require an explicit request from the repository owner for each creation or reopening.
+- Reserve issues for work the owner explicitly wants tracked separately. Administrative closure does not mean a bug is fixed or a test has passed; preserve the true status and evidence in project documentation.
+
 ## Validation
 
 - Web panel build: `cd web-panel && pnpm run build` (runs type-check, Vite build, then `build:bridge` into `dist`).
